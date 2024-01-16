@@ -16,7 +16,7 @@ foreach (var row in users)
     {
         existingUser.Username = splitUsers[1];
         existingUser.Email = splitUsers[2];
-        existingUser.Password = splitUsers[3]; 
+        existingUser.Password = splitUsers[3];
     }
     else
     {

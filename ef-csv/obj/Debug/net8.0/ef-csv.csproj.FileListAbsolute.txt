@@ -119,3 +119,4 @@ C:\Users\matil\source\repos\entity-framework-csv\ef-csv\obj\Debug\net8.0\refint\
 C:\Users\matil\source\repos\entity-framework-csv\ef-csv\obj\Debug\net8.0\ef-csv.pdb
 C:\Users\matil\source\repos\entity-framework-csv\ef-csv\obj\Debug\net8.0\ef-csv.genruntimeconfig.cache
 C:\Users\matil\source\repos\entity-framework-csv\ef-csv\obj\Debug\net8.0\ref\ef-csv.dll
+C:\Users\matil\source\repos\entity-framework-csv\ef-csv\obj\Debug\net8.0\ef-csv.sourcelink.json
