@@ -5,22 +5,49 @@ string[] users = File.ReadAllLines($"Users.csv");
 string[] posts = File.ReadAllLines($"Posts.csv");
 string[] blogs = File.ReadAllLines($"Blogs.csv");
 
-// Filling in tables
-foreach (var u in users)
+
+foreach (var row in users)
 {
-    string[] splitUsers = u.Split(';');
-    User user = new User
-    {
-        UserId = int.Parse(splitUsers[0]),
-        Username = splitUsers[1],
-        Email = splitUsers[2],
-        Password = splitUsers[3],
-    };
+    string[] splitUsers = row.Split(';');
+    int userId = int.Parse(splitUsers[0]);
     
-    db.Users.Add(user);
-} 
+    var existingUser = db.Users.Find(userId);
+    if (existingUser != null)
+    {
+        existingUser.Username = splitUsers[1];
+        existingUser.Email = splitUsers[2];
+        existingUser.Password = splitUsers[3]; 
+    }
+    else
+    {
+        User newUser = new User
+        {
+            UserId = userId,
+            Username = splitUsers[1],
+            Email = splitUsers[2],
+            Password = splitUsers[3],
+        };
+        db.Users.Add(newUser);
+    }  
+}
+db.SaveChanges();
+
+foreach (User b in db.Users)
+{
+    Console.WriteLine(b.Email);
+}
 
 db.SaveChanges();
+
+
+
+
+
+
+
+
+
+
 
 
 
