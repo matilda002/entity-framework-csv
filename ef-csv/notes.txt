@@ -1,0 +1,36 @@
+﻿namespace ef_csv;
+
+public class notes
+{
+    string? item = String.Empty;
+    replace dividers and split row
+    foreach (var i in item)
+    {
+        string removeSemicolon = item.Replace(";", ", ");
+        string[] splitPosts = removeSemicolon.Split('\n');
+    } 
+}
+
+
+  // Check if a blog with the same Id already exists in the context
+    var existingBlog = db.Blogs.Find(blogId);
+
+    if (existingBlog != null)
+    {
+        // Update the existing blog
+        existingBlog.Url = url;
+        existingBlog.Name = name;
+        existingBlog.PostId = postid;
+    }
+    else
+    {
+        // Add a new blog
+        db.Blogs.Add(new Blog { Id = blogId, Url = url, Name = name, PostId = postid });
+    }
+}
+
+
+// restart database
+dotnet ef database update 0 --context BloggingContext 
+dotnet ef migrations add InitialCreate
+dotnet ef database update
