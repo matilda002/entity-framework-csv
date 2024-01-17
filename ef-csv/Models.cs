@@ -30,7 +30,7 @@ public class Blog
    public string Url { get; set; }
    public string BlogName { get; set; } 
    
-   public List<Post> Posts { get; } = new();
+   public List<Post> Posts { get; set; } = new();
 }
 
 public class BloggingContext : DbContext
@@ -44,7 +44,7 @@ public class BloggingContext : DbContext
    public BloggingContext()
    {
       var folder = Environment.CurrentDirectory;
-      DbPath = System.IO.Path.Join(folder, "blogging.db");
+      DbPath = System.IO.Path.Join(folder, "cs.forts-Matilda-Olsson.db");
    }
 
    protected override void OnConfiguring(DbContextOptionsBuilder options)
