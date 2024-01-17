@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ef-csv")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fe5422059b902a269f47b4c9638492a1207c293")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+110f9cb200487decec5ca8228f9c0b2a5ef19b2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ef-csv")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ef-csv")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

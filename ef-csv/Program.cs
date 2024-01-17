@@ -32,11 +32,39 @@ foreach (var row in users)
 }
 db.SaveChanges();
 
-foreach (User b in db.Users)
+foreach (var row in blogs)
 {
-    Console.WriteLine(b.Email);
+    string[] splitBlogs = row.Split(';');
+    int blogId = int.Parse(splitBlogs[0]);
+    
+    var existingBlog = db.Blogs.Find(blogId);
+    if (existingBlog != null)
+    {
+        existingBlog.Url = splitBlogs[1];
+        existingBlog.BlogName = splitBlogs[2];
+    }
+    else
+    {
+        Blog newBlog = new Blog()
+        {
+            BlogId = blogId,
+            Url = splitBlogs[1],
+            BlogName = splitBlogs[2]
+        };
+        db.Blogs.Add(newBlog);
+    }  
+}
+db.SaveChanges();
+
+foreach (User u in db.Users)
+{
+    Console.WriteLine(u.Email);
 }
 
+foreach (Blog b in db.Blogs)
+{
+    Console.WriteLine(b.BlogName);
+}
 db.SaveChanges();
 
 
