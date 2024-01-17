@@ -56,9 +56,39 @@ foreach (var row in blogs)
 }
 db.SaveChanges();
 
+foreach (var row in posts)
+{
+    string[] splitPosts = row.Split(';');
+    int postId = int.Parse(splitPosts[0]);
+    
+    var existingPost = db.Posts.Find(postId);
+    if (existingPost != null)
+    {
+        existingPost.Title = splitPosts[1];
+        existingPost.Content = splitPosts[2];
+        existingPost.Published = splitPosts[3];
+        existingPost.BlogId = Convert.ToInt32(splitPosts[4]);
+        existingPost.UserId = Convert.ToInt32(splitPosts[5]);
+    }
+    else
+    {
+        Post newPost = new Post()
+        {
+            PostId = postId,
+            Title = splitPosts[1],
+            Content = splitPosts[2],
+            Published = splitPosts[3],
+            BlogId = Convert.ToInt32(splitPosts[4]),
+            UserId = Convert.ToInt32(splitPosts[5])
+        };
+        db.Posts.Add(newPost);
+    }
+}
+db.SaveChanges();
+
 foreach (User u in db.Users)
 {
-    Console.WriteLine(u.Email);
+    Console.WriteLine(u.Username);
 }
 
 foreach (Blog b in db.Blogs)
@@ -66,16 +96,4 @@ foreach (Blog b in db.Blogs)
     Console.WriteLine(b.BlogName);
 }
 db.SaveChanges();
-
-
-
-
-
-
-
-
-
-
-
-
 
