@@ -1,5 +1,7 @@
 ﻿using ef_csv;
-using BloggingContext? db = new();
+using Microsoft.EntityFrameworkCore;
+
+using BloggingContext db = new();
 
 string[] users = File.ReadAllLines($"Users.csv");
 string[] posts = File.ReadAllLines($"Posts.csv");
@@ -67,7 +69,7 @@ foreach (var row in posts)
         existingPost.Title = splitPosts[1];
         existingPost.Content = splitPosts[2];
         existingPost.Published = splitPosts[3];
-        existingPost.BlogId = Convert.ToInt32(splitPosts[4]);
+        existingPost.BlogId = Convert.ToInt32(splitPosts[4]); 
         existingPost.UserId = Convert.ToInt32(splitPosts[5]);
     }
     else
@@ -86,14 +88,50 @@ foreach (var row in posts)
 }
 db.SaveChanges();
 
-foreach (User u in db.Users)
-{
-    Console.WriteLine(u.Username);
-}
+var orderedPosts = db.Posts.OrderBy(p => p.Blog.BlogName)
+    .Include(post => post.User).ToList();
 
 foreach (Blog b in db.Blogs)
 {
-    Console.WriteLine(b.BlogName);
+    if (b.BlogId == 1)
+    {
+        Console.WriteLine("╔═══════════════════════════════════════╗\n"+
+                          $"            {b.BlogName}");
+        Console.WriteLine("╚═══════════════════════════════════════╝");
+        foreach (var p in orderedPosts)
+        {
+            if (p.BlogId == 1)
+            
+            {
+                Console.WriteLine($"\nTitle: {p.Title}\n" +
+                                  $"Content: {p.Content}\n" +
+                                  $"Author: {p.User.Username}\n" + 
+                                  $"Email: {p.User.Email} | Password: {p.User.Password}\n" +
+                                  $"Published on: {p.Published}\n" +
+                                  "-----------------------");
+            }
+        } 
+    }
+
+    Console.WriteLine();
+    
+    if (b.BlogId == 2)
+    {
+        Console.WriteLine("╔═══════════════════════════════════════╗\n"+
+                          $"            {b.BlogName}");
+        Console.WriteLine("╚═══════════════════════════════════════╝");
+        foreach (var p in orderedPosts)
+        {
+            if (p.BlogId == 2)
+            {
+                Console.WriteLine($"\nTitle: {p.Title}\n" +
+                                  $"Content: {p.Content}\n" +
+                                  $"Author: {p.User.Username}\n" + 
+                                  $"Email: {p.User.Email} | Password: {p.User.Password}\n" +
+                                  $"Published on: {p.Published}\n" +
+                                  "-----------------------");
+            }
+        }  
+    }
 }
 db.SaveChanges();
-

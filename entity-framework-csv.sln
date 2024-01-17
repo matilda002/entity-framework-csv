@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ef-csv", "ef-csv\ef-csv.csproj", "{17426CE2-7EC9-4E92-877E-C4D462DD2D79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ef-csv.Tests", "ef-csv.Tests\ef-csv.Tests.csproj", "{2F06092B-6B4E-498B-9606-CE3DF1C1B20A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{17426CE2-7EC9-4E92-877E-C4D462DD2D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17426CE2-7EC9-4E92-877E-C4D462DD2D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17426CE2-7EC9-4E92-877E-C4D462DD2D79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F06092B-6B4E-498B-9606-CE3DF1C1B20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F06092B-6B4E-498B-9606-CE3DF1C1B20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F06092B-6B4E-498B-9606-CE3DF1C1B20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F06092B-6B4E-498B-9606-CE3DF1C1B20A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
