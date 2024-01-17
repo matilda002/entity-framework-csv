@@ -163,5 +163,4 @@ foreach (User u in db.Users)
         }  
     }
 }
-
 db.SaveChanges();
