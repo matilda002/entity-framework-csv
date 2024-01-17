@@ -1,4 +1,5 @@
-﻿using ef_csv;
+﻿using System.Threading.Channels;
+using ef_csv;
 using Microsoft.EntityFrameworkCore;
 
 using BloggingContext db = new();
@@ -89,49 +90,82 @@ foreach (var row in posts)
 db.SaveChanges();
 
 var orderedPosts = db.Posts.OrderBy(p => p.Blog.BlogName)
-    .Include(post => post.User).ToList();
+    .Include(post => post.User).Include(post => post.Blog).ToList();
 
-foreach (Blog b in db.Blogs)
+foreach (User u in db.Users)
 {
-    if (b.BlogId == 1)
+    if (u.UserId == 1)
     {
-        Console.WriteLine("╔═══════════════════════════════════════╗\n"+
-                          $"            {b.BlogName}");
+        Console.WriteLine("\n╔═══════════════════════════════════════╗\n"+
+                          $"             {u.Username} (ID: {u.UserId})");
         Console.WriteLine("╚═══════════════════════════════════════╝");
-        foreach (var p in orderedPosts)
+        Console.WriteLine($"Email: {u.Email} | Password: {u.Password}\n");
+        foreach (Post p in db.Posts)
         {
-            if (p.BlogId == 1)
-            
+            if (p.UserId == 1)
             {
-                Console.WriteLine($"\nTitle: {p.Title}\n" +
+                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
+                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
                                   $"Content: {p.Content}\n" +
-                                  $"Author: {p.User.Username}\n" + 
-                                  $"Email: {p.User.Email} | Password: {p.User.Password}\n" +
-                                  $"Published on: {p.Published}\n" +
+                                  $"Publishing date: {p.Published}\n" +
                                   "-----------------------");
             }
-        } 
+        }  
     }
-
-    Console.WriteLine();
-    
-    if (b.BlogId == 2)
+    if (u.UserId == 2)
     {
-        Console.WriteLine("╔═══════════════════════════════════════╗\n"+
-                          $"            {b.BlogName}");
+        Console.WriteLine("\n╔═══════════════════════════════════════╗\n"+
+                          $"             {u.Username} (ID: {u.UserId})");
         Console.WriteLine("╚═══════════════════════════════════════╝");
-        foreach (var p in orderedPosts)
+        Console.WriteLine($"Email: {u.Email} | Password: {u.Password}\n");
+        foreach (Post p in db.Posts)
         {
-            if (p.BlogId == 2)
+            if (p.UserId == 2)
             {
-                Console.WriteLine($"\nTitle: {p.Title}\n" +
+                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
+                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
                                   $"Content: {p.Content}\n" +
-                                  $"Author: {p.User.Username}\n" + 
-                                  $"Email: {p.User.Email} | Password: {p.User.Password}\n" +
-                                  $"Published on: {p.Published}\n" +
+                                  $"Publishing date: {p.Published}\n" +
+                                  "-----------------------");
+            }
+        }  
+    }
+    if (u.UserId == 3)
+    {
+        Console.WriteLine("\n╔═══════════════════════════════════════╗\n"+
+                          $"            {u.Username} (ID: {u.UserId})");
+        Console.WriteLine("╚═══════════════════════════════════════╝");
+        Console.WriteLine($"Email: {u.Email} | Password: {u.Password}\n");
+        foreach (Post p in db.Posts)
+        {
+            if (p.UserId == 3)
+            {
+                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
+                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                                  $"Content: {p.Content}\n" +
+                                  $"Publishing date: {p.Published}\n" +
+                                  "-----------------------");
+            }
+        }  
+    }
+    if (u.UserId == 4)
+    {
+        Console.WriteLine("\n╔═══════════════════════════════════════╗\n"+
+                          $"            {u.Username} (ID: {u.UserId})");
+        Console.WriteLine("╚═══════════════════════════════════════╝");
+        Console.WriteLine($"Email: {u.Email} | Password: {u.Password}\n");
+        foreach (Post p in db.Posts)
+        {
+            if (p.UserId == 4)
+            {
+                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
+                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                                  $"Content: {p.Content}\n" +
+                                  $"Publishing date: {p.Published}\n" +
                                   "-----------------------");
             }
         }  
     }
 }
+
 db.SaveChanges();
