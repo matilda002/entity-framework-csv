@@ -88,9 +88,6 @@ foreach (var row in posts)
 }
 db.SaveChanges();
 
-var orderedPosts = db.Posts.OrderBy(p => p.Blog.BlogName)
-    .Include(post => post.User).Include(post => post.Blog).ToList();
-
 foreach (User u in db.Users)
 {
     if (u.UserId == 1)
