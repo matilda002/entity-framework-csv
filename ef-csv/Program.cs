@@ -1,5 +1,4 @@
-﻿using System.Threading.Channels;
-using ef_csv;
+﻿using ef_csv;
 using Microsoft.EntityFrameworkCore;
 
 using BloggingContext db = new();
@@ -104,11 +103,11 @@ foreach (User u in db.Users)
         {
             if (p.UserId == 1)
             {
-                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
-                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                Console.WriteLine($"- {p.Blog.BlogName} ({p.Blog.Url}) -\n\n" +
+                                  $"Title: {p.Title} (ID: {p.PostId})\n" +
                                   $"Content: {p.Content}\n" +
                                   $"Publishing date: {p.Published}\n" +
-                                  "-----------------------");
+                                  "------------------------------------------------");
             }
         }  
     }
@@ -122,11 +121,11 @@ foreach (User u in db.Users)
         {
             if (p.UserId == 2)
             {
-                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
-                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                Console.WriteLine($"- {p.Blog.BlogName} ({p.Blog.Url}) -\n\n" +
+                                  $"Title: {p.Title} (ID: {p.PostId})\n" +
                                   $"Content: {p.Content}\n" +
                                   $"Publishing date: {p.Published}\n" +
-                                  "-----------------------");
+                                  "------------------------------------------------");
             }
         }  
     }
@@ -140,11 +139,11 @@ foreach (User u in db.Users)
         {
             if (p.UserId == 3)
             {
-                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
-                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                Console.WriteLine($"- {p.Blog.BlogName} ({p.Blog.Url}) -\n\n" +
+                                  $"Title: {p.Title} (ID: {p.PostId})\n" +
                                   $"Content: {p.Content}\n" +
                                   $"Publishing date: {p.Published}\n" +
-                                  "-----------------------");
+                                  "------------------------------------------------");
             }
         }  
     }
@@ -158,11 +157,11 @@ foreach (User u in db.Users)
         {
             if (p.UserId == 4)
             {
-                Console.WriteLine($"Blog: {p.Blog.BlogName} | Url: {p.Blog.Url}\n" +
-                                  $"PostID: {p.PostId} | Title: {p.Title}\n" +
+                Console.WriteLine($"- {p.Blog.BlogName} ({p.Blog.Url}) -\n\n" +
+                                  $"Title: {p.Title} (ID: {p.PostId})\n" +
                                   $"Content: {p.Content}\n" +
                                   $"Publishing date: {p.Published}\n" +
-                                  "-----------------------");
+                                  "------------------------------------------------");
             }
         }  
     }
